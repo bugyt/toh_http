@@ -1,8 +1,7 @@
 <h2>My Heroes</h2>
 <div>
     <label>Hero name:
-        <input (keyup.enter)="add(heroName.value); heroName.value=''" 
-        #heroName />
+        <input (keyup.enter)="add(heroName.value); heroName.value=''" #heroName />
     </label>
     <!-- (click) passes input value to add() and then clears the input -->
     <button (click)="add(heroName.value); heroName.value=''">
@@ -12,8 +11,8 @@
 <ul class="heroes">
     <li *ngFor="let hero of heroes; trackBy: trackByHeroes">
         <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
         <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
     </li>
 
