@@ -17,20 +17,33 @@ export class HeroesComponent implements OnInit {
   ngOnInit() {
     this.getHeroes();
   }
-
+  /*
+  onKey(event: KeyboardEvent) {
+    if (event.keyCode == 13) {
+      if (this.add((<HTMLInputElement>event.target).value) {
+        (<HTMLInputElement>event.target).value = '';
+      }
+    }
+    console.log((<HTMLInputElement>event.target).value + ' || ' + event.key);
+  }
+  */
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => (this.heroes = heroes));
   }
 
-  add(name: string): void {
+  trackByHeroes(index: number, hero: Hero): string {
+    return hero.objectId;
+  }
+
+  add(name: string): boolean {
     name = name.trim();
     if (!name) {
-      return;
+      return false;
     }
     this.heroService.getHeroId().subscribe(res => {
       const newId = res ? res['maxId'] + 1 : 1;
       const newHero: Hero = {
-        objectId: null,
+        objectId: '',
         id: newId,
         name: name
       };
@@ -38,6 +51,7 @@ export class HeroesComponent implements OnInit {
         this.heroes.push({ id: newId, name: name, objectId: hero.objectId });
       });
     });
+    return true;
   }
 
   delete(hero: Hero): void {

@@ -107,7 +107,7 @@
         "variable-declaration": "nospace"
       }
     ],
-    "typeof-compare": true,
+    // "typeof-compare": true,
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [

@@ -1,5 +1,7 @@
 export class Hero {
-    objectId: number;
-    id: number;
-    name: string;
+    constructor(
+        public objectId: string,
+        public id: number,
+        public name: string
+    ) {}
 }
